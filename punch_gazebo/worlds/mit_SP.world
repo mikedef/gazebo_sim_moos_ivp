@@ -1,8 +1,8 @@
 <?xml version="1.0" ?>
 <sdf version="1.6">
   <!-- COORDINATE: {'constant': 0, 'environment': 0} -->
-  <world name="oak_island">
-    <!-- Estimated latitude/longitude of oak island
+  <world name="MIT_Sailing">
+    <!-- Estimated latitude/longitude of MIT Sailing Pavilion
 	 from satellite imagery -->
     <spherical_coordinates>
       <surface_model>EARTH_WGS84</surface_model>
@@ -23,6 +23,17 @@
         <view_controller>orbit</view_controller>
       </camera>
     </gui>
+
+    <!--
+    <plugin name="ros_link_attacher_plugin" filename="libgazebo_ros_link_attacher.so" />
+    -->
+
+    <!-- Add aruco marker -->
+    <!-- see punch_gazebo/models/aruco_marker 
+    <include>
+      <uri>model://aruco_marker</uri>
+    </include>
+    -->
     
     <!--
     <include> -->
