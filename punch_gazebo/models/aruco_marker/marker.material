@@ -1,0 +1,18 @@
+material aruco_5{
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1.0000
+      diffuse 1 1 1 1.0000
+      specular 0.03 0.03 0.03 1.0000
+      emissive 0.9000 0.9000 0.9000 1.0000
+
+      texture_unit
+      {
+       	texture aruco-26_8cm.png
+         scale 1 1
+      }
+    }
+  }
+}
