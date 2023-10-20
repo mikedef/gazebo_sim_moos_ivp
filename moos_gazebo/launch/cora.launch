@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<launch>
+  <env name="ROSCONSOLE_CONFIG_FILE" value="$(find vrx_gazebo)/config/custom_rosconsole.conf"/>
+  <!-- Supress tf warnings -->
+  <rosparam param="silent_tf_failure">true</rosparam>
+
+  <!-- Load TARGET robot model -->         
+  <arg name="urdf" default="$(find moos_gazebo)/config/cora/cora.xacro"/>
+  <!-- Target vessel namespace -->
+  <arg name="root_namespace" default="not_set"/>
+  <arg name="namespace" default="cora"/>
+  <arg name="tf_prefix" default="not_set"/>
+  <arg name="fiducial" default="false"/>
+  <arg name="sensors" default="false"/>
+  <!-- MOOS Params  -->
+  <!-- Gateway Key: Sets key for robot node report
+       Set as ASSET or TARGET -->
+  <arg name="gateway_key" default="_NODE_REPORT_GAZEBO"/>
+  <!-- Process Data Key: Sets topic to be reported /asset_data or /track_data
+       Set as ASSET_<#>* or TRACK_<#>* -->
+  <arg name="process_data_key" default="_NODE_REPORT_LOCAL"/>
+  <arg name="vtype" default="ASSET"/>
+  <!-- Desired to thrust --> 
+  <arg name="rudder_key" default="DESIRED_RUDDER"/>
+  <arg name="thrust_key" default="DESIRED_THRUST"/>
+  <arg name="right_thrust_key" default="COMMANDED_THRUST_R"/>
+  <arg name="left_thrust_key" default="COMMANDED_THRUST_L"/>
+  <!-- protobuf_client -->
+  <arg name="gateway_port" default="9501"/>
+  <!-- end MOOS Params  -->
+
+  <!-- USV location and attitude-->
+  <arg name="x" default="-130" />
+  <arg name="y" default="-630" />
+  <arg name="z" default="0.1" />
+  <arg name="P" default="0" />
+  <arg name="R" default="0" />
+  <arg name="Y" default="-1.57" />
+  
+  <!-- Robot Node Launch -->
+  <group ns="$(arg root_namespace)">
+
+    <!-- Topic to send to gateway -->
+    <arg name="send_to_gateway_topic" default="/send_to_gateway_$(arg root_namespace)"/>
+    
+    
+    <!-- Lock the vessel to the target world? -->
+    <arg name="robot_locked" default="false" />
+  
+    <param name="robot_description"
+	   command="$(find xacro)/xacro '$(arg urdf)'             
+		    locked:=$(arg robot_locked) 
+		    namespace:=cora 
+		    root_namespace:=$(arg root_namespace)
+		    tf_prefix:=$(arg tf_prefix)
+	            fiducial:=$(arg fiducial)
+		    sensors:=$(arg sensors)"/>
+
+    <!-- Spawn model in Gazebo -->
+    <node name="spawn_target_model" pkg="gazebo_ros" type="spawn_model"  
+          args="-x $(arg x) -y $(arg y) -z $(arg z)    
+		-R $(arg R) -P $(arg P) -Y $(arg Y)                    
+		-urdf -param robot_description -model $(arg root_namespace)"/>
+
+    <!-- Publishes static joint transforms (lidar, cameras, etc) to /tf -->
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="rob_st_pub"/>
+    <!-- Publishes revolute joint static transforms (gps and imu) to /tf -->
+    <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_pub">
+      <param name="gui" value="false" />
+    </node>
+
+    <!-- launch protobuf_client -->
+    <node pkg="protobuf_client"
+	  type="protobuf_client" name="protobuf_client" >
+      <param name="gateway_port" value="$(arg gateway_port)"/>  
+      <param name="gateway_ip" value="127.0.0.1"/>
+      <param name="send_to_gateway_topic" value="$(arg send_to_gateway_topic)"/>
+    </node>
+
+    <!-- compose contact report: Sends Node Report to MOOS -->
+    <node pkg="moos_gazebo_nodes"
+	  type="compose_contact_report.py" name="compose_contact" output="screen">
+      <param name="root_namespace" value="$(arg root_namespace)"/>
+      <param name="namespace" value="$(arg namespace)"/>
+      <param name="contact_length" value="5.0"/>
+      <param name="contact_gt" value="True"/>
+      <param name="gateway_key" value="$(arg gateway_key)"/>
+      <param name="pub_topic" value="$(arg send_to_gateway_topic)"/>
+    </node>
+
+    <!-- Publish robot data -->
+    <node pkg="moos_gazebo_nodes"
+	  type="publish_robot_data.py" name="publish_robot_data" >
+      <param name="root_namespace" value="$(arg root_namespace)"/>
+      <param name="namespace" value="$(arg namespace)"/>
+    </node>
+
+    <!-- convert MOOS DESIRED_RUDDER/THRUST for control to target thrusters in Gazebo -->
+    <node pkg="moos_gazebo_nodes"
+	  type="desired_to_thrust.py" name="vehicle_thrust" output="screen">
+      <param name="rudder_key" value="$(arg rudder_key)"/>
+      <param name="thrust_key" value="$(arg thrust_key)"/>
+      <param name="right_thrust_key" value="$(arg right_thrust_key)"/>
+      <param name="left_thrust_key" value="$(arg left_thrust_key)"/>
+      
+      <remap from="left_cmd"
+	     to="/$(arg root_namespace)/$(arg namespace)/thrusters/left_thrust_cmd"/>            
+      <remap from="right_cmd"
+	     to="/$(arg root_namespace)/$(arg namespace)/thrusters/right_thrust_cmd"/>
+    </node>
+  </group>  <!--end  Robot Node launch -->
+
+    
+</launch>

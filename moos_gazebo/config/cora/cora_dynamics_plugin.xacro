@@ -4,7 +4,7 @@
     <!--Gazebo Plugin for simulating Cora dynamics-->
     <gazebo>
       <plugin name="usv_dynamics_${name}" filename="libusv_gazebo_dynamics_plugin.so">
-        <bodyName>cora/base_link</bodyName>
+        <bodyName>${tf_prefix}/cora/base_link</bodyName>
         <!-- Must be same as the ocean model!-->
         <waterLevel>0</waterLevel>
         <waterDensity>1024.0</waterDensity>
@@ -16,9 +16,9 @@
         <mDotQ>0.0</mDotQ>
         <nDotR>0.0</nDotR>
         <!-- Linear and quadratic drag -->
-        <xU>120.0</xU>
-        <xUU>240.0</xUU>
-        <yV>240.0</yV>
+        <xU>21200.0</xU>
+        <xUU>22400.0</xUU>
+        <yV>1240.0</yV>
         <yVV>2600</yVV>
         <zW>50000.0</zW>
         <zWW>0.0</zWW>

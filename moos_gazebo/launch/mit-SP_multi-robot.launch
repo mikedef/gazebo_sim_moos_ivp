@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- Launch Simulated World in Gazebo-->
+  <include file="$(find moos_gazebo)/launch/world.launch" >
+    <!-- Gazebo world to load -->                                           
+    <arg name="world" value="$(find moos_gazebo)/worlds/mit_SP.world" />
+  </include>
+
+  <!-- Launch Asset 1 -->
+  <include file="$(find moos_gazebo)/launch/cora.launch" >
+    <!-- Set Root Namespace -->
+    <arg name="root_namespace" value="asset_1" />
+    <arg name="tf_prefix" value="asset_1"/>
+    <arg name="sensors" value="true"/>
+    
+    <!-- Set robot spawn point -->
+    <arg name="x" value="40" />                                                
+    <arg name="y" value="-50" />                                      
+    <arg name="z" value="0.1" />                                       
+    <arg name="P" value="0" />                                    
+    <arg name="R" value="0" />                        
+    <arg name="Y" value="-1.57" />
+
+    <!-- Set key to ASSET_* or TARGET_* -->
+    <arg name="gateway_key" value="ASSET_NODE_REPORT_GAZEBO"/>
+
+    <!-- Process Node Report from MOOS -->
+    <arg name="process_data_key" value="ASSET_1_"/>
+    <arg name="vtype" value="ASSET"/>
+
+    <!-- Rudder and Thrust keys from MOOS -->
+    <arg name="rudder_key" value="ASSET_1_DESIRED_RUDDER"/>
+    <arg name="thrust_key" value="ASSET_1_DESIRED_THRUST"/>
+    <arg name="left_thrust_key" value="ASSET_1_COMMANDED_THRUST_L"/>
+    <arg name="right_thrust_key" value="ASSET_1_COMMANDED_THRUST_R"/>
+
+    <!-- Protobuf gateway port 
+         Must reflect GPORT in MOOS mission launch.sh-->
+    <arg name="gateway_port" value="9501" />
+  </include>
+
+  <!-- End Launch Asset 1 -->
+
+  <!-- Launch Asset 2 -->
+    <include file="$(find moos_gazebo)/launch/cora.launch" >
+    <!-- Set Root Namespace -->
+    <arg name="root_namespace" value="asset_2" />
+    <arg name="tf_prefix" value="asset_2"/>
+
+    <arg name="sensors" value="false"/>
+    <arg name="fiducial" value="true"/>
+    <!-- Set robot spawn point -->
+    <arg name="x" value="30" />                            
+    <arg name="y" value="-50" />          
+    <arg name="z" value="0.1" />             
+    <arg name="P" value="0" />                       
+    <arg name="R" value="0" />                             
+    <arg name="Y" value="-1.57" />
+
+    <!-- Set key to ASSET_* or TARGET_* -->
+    <arg name="gateway_key" value="ASSET_NODE_REPORT_GAZEBO"/>
+
+    <!-- Process Node Report from MOOS -->
+    <arg name="process_data_key" value="ASSET_2_"/>
+    <arg name="vtype" value="ASSET"/>
+
+    <!-- Rudder and Thrust keys from MOOS -->
+    <arg name="rudder_key" value="ASSET_2_DESIRED_RUDDER"/>
+    <arg name="thrust_key" value="ASSET_2_DESIRED_THRUST"/>
+    <arg name="left_thrust_key" value="ASSET_2_COMMANDED_THRUST_L"/>
+    <arg name="right_thrust_key" value="ASSET_2_COMMANDED_THRUST_R"/>
+
+    <!-- Protobuf gateway port 
+         Must reflect GPORT in MOOS mission launch.sh-->
+    <arg name="gateway_port" value="9502" />
+  </include>
+  <!-- End Launch Asset 2 -->
+
+</launch>
