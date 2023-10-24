@@ -20,9 +20,7 @@
        Set as ASSET_<#>* or TRACK_<#>* -->
   <arg name="process_data_key" default="_NODE_REPORT_LOCAL"/>
   <arg name="vtype" default="ASSET"/>
-  <!-- Desired to thrust --> 
-  <arg name="rudder_key" default="DESIRED_RUDDER"/>
-  <arg name="thrust_key" default="DESIRED_THRUST"/>
+  <!-- thrust_vessel --> 
   <arg name="right_thrust_key" default="COMMANDED_THRUST_R"/>
   <arg name="left_thrust_key" default="COMMANDED_THRUST_L"/>
   <!-- protobuf_client -->
@@ -95,11 +93,9 @@
       <param name="namespace" value="$(arg namespace)"/>
     </node>
 
-    <!-- convert MOOS DESIRED_RUDDER/THRUST for control to target thrusters in Gazebo -->
+    <!-- Publish Left/Right Thrust commands from MOOS -->
     <node pkg="moos_gazebo_nodes"
-	  type="desired_to_thrust.py" name="vehicle_thrust" output="screen">
-      <param name="rudder_key" value="$(arg rudder_key)"/>
-      <param name="thrust_key" value="$(arg thrust_key)"/>
+	  type="thrust_vessel.py" name="vehicle_thrust" output="screen">
       <param name="right_thrust_key" value="$(arg right_thrust_key)"/>
       <param name="left_thrust_key" value="$(arg left_thrust_key)"/>
       

@@ -28,9 +28,7 @@
     <arg name="process_data_key" value="ASSET_1_"/>
     <arg name="vtype" value="ASSET"/>
 
-    <!-- Rudder and Thrust keys from MOOS -->
-    <arg name="rudder_key" value="ASSET_1_DESIRED_RUDDER"/>
-    <arg name="thrust_key" value="ASSET_1_DESIRED_THRUST"/>
+    <!-- Left/Right Thrust keys from MOOS -->
     <arg name="left_thrust_key" value="ASSET_1_COMMANDED_THRUST_L"/>
     <arg name="right_thrust_key" value="ASSET_1_COMMANDED_THRUST_R"/>
 

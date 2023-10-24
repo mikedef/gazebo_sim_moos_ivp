@@ -12,8 +12,10 @@ Repository to simulate a marine vessel in the Gazebo simulation environment. Thi
     * Node to send vessel navigation data to MOOS
   * publish_robot_data.py
     * Node to publish robot data as topics
-  * desired_to_thrust.py
+  * desired_to_thrust.py (depreciated)
     * Node to publish MOOS-IvP thrust data to vessel left/right thrusters
+  * thrust_vessel.py
+    * NOde to publish COMMANDED_THRUST_LEFT and COMMANDED_THRUST_RIGHT data directly from MOOS-IvP
 
 ## Notes
 * 

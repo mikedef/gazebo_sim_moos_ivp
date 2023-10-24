@@ -31,7 +31,6 @@ class Node(object):
         # Injest Launch Params
         self.contact_namespace = rospy.get_param("~namespace", 'cora')
         self.contact_root_namespace = rospy.get_param("~root_namespace", 'asset')
-        self.contact_id = rospy.get_param("~contact_id", 'contact')
         self.contact_length = rospy.get_param("~contact_length", 1.0)
         self.contact_lat = 0.0
         self.contact_lon = 0.0
@@ -47,11 +46,9 @@ class Node(object):
         self.pub_topic = rospy.get_param("~pub_topic", '/send_to_gateway')
         
         # Publishers
-        #self.pub_contact_report = rospy.Publisher('/send_to_gateway', Gateway, queue_size = 1)
         self.pub_contact_report = rospy.Publisher(self.pub_topic, Gateway, queue_size = 1)
         
         # Subscribers
-        # subscribe to contacts GPS to confirm output to MOOS is similar to processed contact
         if self.contact_gt:
             self.s1 = rospy.Subscriber('/' + self.contact_root_namespace + '/' +
                                        self.contact_namespace + '/sensors/gps/gps/fix',
@@ -65,8 +62,6 @@ class Node(object):
                                        self.contact_namespace + '/sensors/imu/imu/data',
                                        Imu,
                                        self.imu_cb)
-        # subscribe to clusters to build a contact report 
-        #self.s4 = rospy.Subscriber(<topic output from radar cluster processing in XY or lat/lon?
 
     def imu_cb(self, msg):
         q = msg.orientation                                                                   
