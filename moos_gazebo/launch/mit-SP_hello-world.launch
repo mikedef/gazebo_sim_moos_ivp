@@ -24,10 +24,6 @@
     <!-- Set key to ASSET_* or TARGET_* -->
     <arg name="gateway_key" value="ASSET_NODE_REPORT_GAZEBO"/>
 
-    <!-- Process Node Report from MOOS -->
-    <arg name="process_data_key" value="ASSET_1_"/>
-    <arg name="vtype" value="ASSET"/>
-
     <!-- Left/Right Thrust keys from MOOS -->
     <arg name="left_thrust_key" value="ASSET_1_COMMANDED_THRUST_L"/>
     <arg name="right_thrust_key" value="ASSET_1_COMMANDED_THRUST_R"/>

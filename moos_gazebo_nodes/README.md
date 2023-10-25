@@ -23,7 +23,7 @@ Topic to be sent to MOOS-IvP. Minimal vessel data in the for of a MOOS Node Repo
 * `namespace` Parameter to set namespace
 * `root_namespace` Parameter to set root namespace
 * `contact_length` Parameter to set vessel length
-* 'gateway_key` Parameter to set gateway key for MOOS consumption
+* `gateway_key` Parameter to set gateway key to send to MOOS 
 * `contact_gt` Parameter to enable groundtruth publish for MOOS consumption
 TODO: Remove this as it is no longer used
 

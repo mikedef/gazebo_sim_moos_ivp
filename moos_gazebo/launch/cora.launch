@@ -13,13 +13,8 @@
   <arg name="fiducial" default="false"/>
   <arg name="sensors" default="false"/>
   <!-- MOOS Params  -->
-  <!-- Gateway Key: Sets key for robot node report
-       Set as ASSET or TARGET -->
+  <!-- Gateway Key: Sets key for robot node report, prefix as as ASSET_<#> or TARGET<#> -->
   <arg name="gateway_key" default="_NODE_REPORT_GAZEBO"/>
-  <!-- Process Data Key: Sets topic to be reported /asset_data or /track_data
-       Set as ASSET_<#>* or TRACK_<#>* -->
-  <arg name="process_data_key" default="_NODE_REPORT_LOCAL"/>
-  <arg name="vtype" default="ASSET"/>
   <!-- thrust_vessel --> 
   <arg name="right_thrust_key" default="COMMANDED_THRUST_R"/>
   <arg name="left_thrust_key" default="COMMANDED_THRUST_L"/>

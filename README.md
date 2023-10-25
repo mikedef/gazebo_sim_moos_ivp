@@ -2,10 +2,18 @@
 Repository to simulate a marine vessel in the Gazebo simulation environment. This repo is intended to be used with protobuf_client package as well as the MOOS-IvP moos-ivp-gateway and moos-ivp-sim-gazebo packages
 
 * Available vessels
-  * WAM-V
   * CORA
+  * WAM-V (TODO: Add model)
 
 ## moos_gazebo
+## Launch Files
+
+### cora.launch
+  Base launch script for a custom CORA model in Gazebo
+### mit-SP_hello-world.launch
+  Top level launch script to launch a single CORA model for use with MOOS-IvP. To be used in conjunction with the `moos-ivp-sim-gazebo/missions/hello-world` mission
+### mit-SP_multi-robot.launch
+  Top level launch script to launch multiple CORA models for use with MOOS-IvP. To be used in conjunction with the `moos-ivp-sim-gazebo/missions/multi-robot` mission
 
 ## moos_gazebo_nodes
   * compose_contact_report.py
@@ -15,7 +23,7 @@ Repository to simulate a marine vessel in the Gazebo simulation environment. Thi
   * desired_to_thrust.py (depreciated)
     * Node to publish MOOS-IvP thrust data to vessel left/right thrusters
   * thrust_vessel.py
-    * NOde to publish COMMANDED_THRUST_LEFT and COMMANDED_THRUST_RIGHT data directly from MOOS-IvP
+    * Node to publish COMMANDED_THRUST_LEFT and COMMANDED_THRUST_RIGHT data directly from MOOS-IvP
 
 ## Notes
 * 
