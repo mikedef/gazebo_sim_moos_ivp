@@ -16,3 +16,15 @@ P
   * `gateway_port` Argument to set the port for `protobuf_client` to communicate with the MOOS-IvP vesse
 l community                                                                                             
   * `USV location and attitude` Arguments to set vessel location `x,y,z,R,P,Y`
+
+
+## mit-SP_hello-world.launch and mit-SP_multi-robot.launch
+ Top level launch script to launch a single CORA model for use with MOOS-IvP. To be used in conjunction\
+ with the `moos-ivp-sim-gazebo/missions/hello-world` mission
+
+### ROS Args:
+  In addition to the base level args in cora.launch
+  * `world` Argument to launch a Gazebo world model
+    See `../worlds/mit_SP.world` as an example
+
+

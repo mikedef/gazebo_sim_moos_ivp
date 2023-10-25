@@ -15,6 +15,11 @@ Repository to simulate a marine vessel in the Gazebo simulation environment. Thi
 ### mit-SP_multi-robot.launch
   Top level launch script to launch multiple CORA models for use with MOOS-IvP. To be used in conjunction with the `moos-ivp-sim-gazebo/missions/multi-robot` mission
 
+## World Files
+### mit_SP.world
+  * Water world with the MIT Sailing Pavilion datum set as `42.358436, -71.087448`
+    * Sets wind and wave forcing 
+
 ## moos_gazebo_nodes
   * compose_contact_report.py
     * Node to send vessel navigation data to MOOS
