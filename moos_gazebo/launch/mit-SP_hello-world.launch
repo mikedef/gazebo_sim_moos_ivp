@@ -6,12 +6,16 @@
     <arg name="world" value="$(find moos_gazebo)/worlds/mit_SP.world" />
   </include>
 
+  
   <!-- Launch Asset 1 -->
-  <include file="$(find moos_gazebo)/launch/cora.launch" >
+  <arg name="vessel_1_type" default="cora"/>
+  <arg name="vessel_1_urdf" default=""/>
+  <include file="$(find moos_gazebo)/launch/$(arg vessel_1_type).launch" >
     <!-- Set Root Namespace -->
     <arg name="root_namespace" value="asset_1" />
     <arg name="tf_prefix" value="asset_1"/>
     <arg name="sensors" value="true"/>
+    <arg name="urdf" value="$(arg vessel_1_urdf)"/>
     
     <!-- Set robot spawn point -->
     <arg name="x" value="40" />                                                

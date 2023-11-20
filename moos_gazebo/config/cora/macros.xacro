@@ -4,18 +4,16 @@
        name="cora">
 
   <!-- Include sensor macros -->
-  <xacro:include filename="$(find punch_bringup)/config/cora/cora_camera.xacro" />
-  <!-- Modified for marina world -->
-  <xacro:include filename="$(find punch_bringup)/config/cora/cora_gps.xacro" />
-  <xacro:include filename="$(find punch_bringup)/config/cora/cora_imu.xacro" />
-
-  <xacro:include filename="$(find punch_bringup)/config/cora/cora_3d_lidar.xacro" />
-  <xacro:include filename="$(find punch_bringup)/config/cora/lidar.xacro" />
-  <xacro:include filename="$(find punch_bringup)/config/cora/cora_p3d.xacro" />
+  <xacro:include filename="$(find moos_gazebo)/config/cora/cora_camera.xacro" />
+  <xacro:include filename="$(find moos_gazebo)/config/cora/cora_gps.xacro" />
+  <xacro:include filename="$(find moos_gazebo)/config/cora/cora_imu.xacro" />
+  <xacro:include filename="$(find moos_gazebo)/config/cora/cora_3d_lidar.xacro" />
+  <xacro:include filename="$(find moos_gazebo)/config/cora/lidar.xacro" />
+  <xacro:include filename="$(find moos_gazebo)/config/cora/cora_p3d.xacro" />
   <!--   -->
-  <xacro:include filename="$(find punch_bringup)/config/cora/cora_aruco.xacro" />
+  <xacro:include filename="$(find moos_gazebo)/config/cora/cora_aruco.xacro" />
 
   <!-- Include dynamics macros -->
-  <xacro:include filename="$(find punch_bringup)/config/cora/cora_dynamics_plugin.xacro" />
+  <xacro:include filename="$(find moos_gazebo)/config/cora/cora_dynamics_plugin.xacro" />
 
 </robot>

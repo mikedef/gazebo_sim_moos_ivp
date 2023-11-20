@@ -7,11 +7,14 @@
   </include>
 
   <!-- Launch Asset 1 -->
-  <include file="$(find moos_gazebo)/launch/cora.launch" >
+  <arg name="vessel_1_type" default="cora"/>
+  <arg name="vessel_1_urdf" default=""/>
+  <include file="$(find moos_gazebo)/launch/$(arg vessel_1_type).launch" >
     <!-- Set Root Namespace -->
     <arg name="root_namespace" value="asset_1" />
     <arg name="tf_prefix" value="asset_1"/>
     <arg name="sensors" value="true"/>
+    <arg name="urdf" value="vessel_1_urdf"/>
     
     <!-- Set robot spawn point -->
     <arg name="x" value="40" />                                                
@@ -32,15 +35,18 @@
          Must reflect GPORT in MOOS mission launch.sh-->
     <arg name="gateway_port" value="9501" />
   </include>
-
   <!-- End Launch Asset 1 -->
 
   <!-- Launch Asset 2 -->
-    <include file="$(find moos_gazebo)/launch/cora.launch" >
+  <arg name="vessel_2_type" default="cora"/>
+  <arg name="vessel_2_urdf" default=""/>
+  <include file="$(find moos_gazebo)/launch/$(arg vessel_2_type).launch" >
     <!-- Set Root Namespace -->
     <arg name="root_namespace" value="asset_2" />
     <arg name="tf_prefix" value="asset_2"/>
-
+    <arg name="sensors" value="false"/>
+    <arg name="urdf" value="vessel_2_urdf"/>
+    
     <arg name="sensors" value="false"/>
     <arg name="fiducial" value="true"/>
     <!-- Set robot spawn point -->

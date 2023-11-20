@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="heron">
+
+  <xacro:arg name="locked" default="false" />
+  <xacro:arg name="fiducial" default="false" />
+  <xacro:arg name="sensors" default="false"/>
+  <xacro:arg name="debug" default="false"/>
+  <xacro:arg name="simulation" default="true"/>
+  <xacro:property name="simulation" value="$(arg simulation)" scope="global"/>
+  <xacro:arg name="tf_prefix" default="tf_prefix_not_set"/>
+  <xacro:property name="tf_prefix" value="$(arg tf_prefix)" scope="global"/>
+  
+  <!-- Robot mesh -->
+  <xacro:include filename="$(find moos_gazebo)/config/heron/heron.urdf.xacro" />
+  
+  
+  <!-- Note: this is only used for some sensors that do not correctly use the
+  robotNamespace parameter -->
+  <xacro:arg name="namespace" default="namespace_not_set"/>
+  <xacro:property name="namespace" value="$(arg namespace)" scope="global" />
+
+  <!-- Thrusters -->
+  <xacro:arg name="thruster_namespace" default="thrusters/"/>
+  <xacro:property name="thruster_namespace" value="$(arg thruster_namespace)" scope="global" />
+  <xacro:arg name="root_namespace" default="root_namespace_not_set"/>
+  <xacro:property name="root_namespace" value="$(arg root_namespace)" scope="global"/>
+  <xacro:include filename="$(find moos_gazebo)/config/cora/thrusters.xacro" />
+
+  <!-- Sensors -->
+
+  <xacro:cora_gps name="gps" x="-1.0" z="4.6" 
+  	update_rate="20" />
+  <xacro:cora_imu name="imu" y="-0.2" z="1.0" update_rate="100" />
+
+  <xacro:if value="$(arg fiducial)">
+    <xacro:cora_aruco name="aruco" />
+  </xacro:if>
+
+</robot>

@@ -1,19 +1,24 @@
 # gazebo_sim_moos_ivp ROS 1 Package
-Repository to simulate a marine vessel in the Gazebo simulation environment. This repo is intended to be used with protobuf_client package as well as the MOOS-IvP moos-ivp-gateway and moos-ivp-sim-gazebo packages
+Repository to simulate a marine vessel in the Gazebo simulation environment. This repo is intended to be used with `protobuf_client` package as well as the MOOS-IvP `moos-ivp-gateway` and `moos-ivp-sim-gazebo` packages
 
 * Available vessels
-  * CORA
-  * WAM-V (TODO: Add model)
+  * CORA USV
+  * WAM-V USV
+  * Heron USV
 
 ## moos_gazebo
 ## Launch Files
 
 ### cora.launch
   Base launch script for a custom CORA model in Gazebo
+### wamv.launch
+  Base launch script for a custom WAM-V model in Gazebo
+### heron.launch
+  Base launch script for a custom Heron model in Gazebo
 ### mit-SP_hello-world.launch
-  Top level launch script to launch a single CORA model for use with MOOS-IvP. To be used in conjunction with the `moos-ivp-sim-gazebo/missions/hello-world` mission
+  Top level launch script to launch a single USV model for use with MOOS-IvP. To be used in conjunction with the `moos-ivp-sim-gazebo/missions/hello-world` mission
 ### mit-SP_multi-robot.launch
-  Top level launch script to launch multiple CORA models for use with MOOS-IvP. To be used in conjunction with the `moos-ivp-sim-gazebo/missions/multi-robot` mission
+  Top level launch script to launch multiple USV models for use with MOOS-IvP. To be used in conjunction with the `moos-ivp-sim-gazebo/missions/multi-robot` mission
 
 ## World Files
 ### mit_SP.world

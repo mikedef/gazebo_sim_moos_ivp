@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!-- Includes all macros in this package so they don't need to be included individualy -->
+<robot xmlns:xacro="http://ros.org/wiki/xacro"
+       name="heron">
+
+  <!-- Include sensor macros -->
+  <xacro:include filename="$(find moos_gazebo)/config/heron/heron_camera.xacro" />
+  <xacro:include filename="$(find moos_gazebo)/config/heron/heron_gps.xacro" />
+  <xacro:include filename="$(find moos_gazebo)/config/heron/heron_imu.xacro" />
+  <xacro:include filename="$(find moos_gazebo)/config/heron/heron_3d_lidar.xacro" />
+  <xacro:include filename="$(find moos_gazebo)/config/heron/lidar.xacro" />
+  <xacro:include filename="$(find moos_gazebo)/config/heron/heron_p3d.xacro" />
+  <!--   -->
+  <xacro:include filename="$(find moos_gazebo)/config/heron/heron_aruco.xacro" />
+
+  <!-- Include dynamics macros -->
+  <xacro:include filename="$(find moos_gazebo)/config/heron/heron_dynamics_plugin.xacro" />
+
+  <!-- 
+  <xacro:include filename="$(find moos_gazebo)/config/heron/heron_base.xacro"/>
+  -->
+</robot>

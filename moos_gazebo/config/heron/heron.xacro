@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://ros.org/wiki/xacro" name="cora">
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="heron">
 
   <xacro:arg name="locked" default="false" />
 
@@ -7,13 +7,14 @@
   <xacro:property name="tf_prefix" value="$(arg tf_prefix)" scope="global"/>
   
   <!-- Include macros for dynamics plugins -->
-  <xacro:include filename="$(find moos_gazebo)/config/cora/macros.xacro" />
+  <xacro:include filename="$(find moos_gazebo)/config/heron/macros.xacro" />
 
   <!-- Attach hydrodynamics plugin -->
-  <xacro:usv_dynamics_gazebo name="cora_dynamics_plugin" />
+  <xacro:usv_dynamics_gazebo name="heron_dynamics_plugin" />
 
-  <!-- Robot mesh -->
-  <xacro:include filename="$(find moos_gazebo)/config/cora/cora.urdf.xacro" />
+  <!-- Robot mesh   -->
+  <xacro:include filename="$(find moos_gazebo)/config/heron/heron.urdf.xacro" />
+
 
   <!-- Note: this is only used for some sensors that do not correctly use the
   robotNamespace parameter -->
@@ -25,15 +26,15 @@
   <xacro:property name="thruster_namespace" value="$(arg thruster_namespace)" scope="global" />
   <xacro:arg name="root_namespace" default="root_namespace_not_set"/>
   <xacro:property name="root_namespace" value="$(arg root_namespace)" scope="global"/>
-  <xacro:include filename="$(find moos_gazebo)/config/cora/thrusters.xacro" />
+  <xacro:include filename="$(find moos_gazebo)/config/heron/thrusters.xacro" />
 
   <!-- Decide if we lock the robot to the world -->
   <xacro:if value="$(arg locked)">
     <gazebo>
-      <link name="cora_external_link"/>
-      <joint name="cora_external_pivot_joint" type="universal">
-        <parent>cora::cora/base_link</parent>
-        <child>cora_external_link</child>
+      <link name="heron_external_link"/>
+      <joint name="heron_external_pivot_joint" type="universal">
+        <parent>heron::heron/base_link</parent>
+        <child>heron_external_link</child>
         <axis>
           <xyz>1 0 0</xyz>
         </axis>
@@ -41,9 +42,9 @@
           <xyz>0 1 0</xyz>
         </axis2>
       </joint>
-      <joint name="cora_external_riser" type="prismatic">
+      <joint name="heron_external_riser" type="prismatic">
         <parent>world</parent>
-        <child>cora_external_link</child>
+        <child>heron_external_link</child>
         <axis>
           <limit>
             <lower>-3</lower>
@@ -62,24 +63,27 @@
   <xacro:property name="camera_namespace" value="$(arg camera_namespace)" scope="global" />
   <xacro:property name="sensor_namespace" value="$(arg sensor_namespace)" scope="global" />
 
+  <!--
   <xacro:if value="$(arg sensors)">
-    <xacro:cora_camera name="front_left_camera"  x="-0.61" y="0.2"  z="4.7" 
+    <xacro:heron_camera name="front_left_camera"  x="-0.61" y="0.2"  z="4.7" 
 		       post_z_from="4.6" P="${radians(15)}" Y="${radians(60)}" />
-    <xacro:cora_camera name="front_center_camera"  x="-0.61" y="0.0"  z="4.7" 
+    <xacro:heron_camera name="front_center_camera"  x="-0.61" y="0.0"  z="4.7" 
 		       post_z_from="4.6" P="${radians(15)}" />
-    <xacro:cora_camera name="front_right_camera" x="-0.61" y="-0.2" z="4.7" 
+    <xacro:heron_camera name="front_right_camera" x="-0.61" y="-0.2" z="4.7" 
 		       post_z_from="4.6" P="${radians(15)}" Y="${radians(-60)}" />
-    <xacro:cora_camera name="side_right_camera" x="-0.75" y="-0.67" z="4.65" 
+    <xacro:heron_camera name="side_right_camera" x="-0.75" y="-0.67" z="4.65" 
 		       post_z_from="4.55" P="${radians(15)}" Y="${radians(-90)}" />
     <xacro:lidar name="front_lidar" type="16_beam" x="-1.1" z="5" 
-		 P="${radians(0)}" post_z_from="4.6"/>  <!-- x="-0.595" -->
+		 P="${radians(0)}" post_z_from="4.6"/>  
   </xacro:if>
-  <xacro:cora_gps name="gps" x="-1.0" z="4.6" 
+  
+  
+  <xacro:heron_gps name="gps" x="-1.0" z="4.6" 
   	update_rate="20" />
-  <xacro:cora_imu name="imu" y="-0.2" z="1.0" update_rate="100" />
-
+  <xacro:heron_imu name="imu" y="-0.2" z="1.0" update_rate="100" />
+  -->
   <xacro:if value="$(arg fiducial)">
-    <xacro:cora_aruco name="aruco" />
+    <xacro:heron_aruco name="aruco" />
   </xacro:if>
 
 </robot>

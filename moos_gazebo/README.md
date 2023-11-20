@@ -1,6 +1,5 @@
 # moos_gazebo
-Package to launch CORA and WAMV vessels in custom configurations. Examples launch with a datum point associated with the MIT Sailing Pavilion
-
+Package to launch CORA, WAMV, or Heron USVs in custom configurations. Examples launch with a datum point associated with the MIT Sailing Pavilion
 
 ## cora.launch
 Base launch script for the custom CORA vessel
@@ -19,12 +18,21 @@ l community
 
 
 ## mit-SP_hello-world.launch and mit-SP_multi-robot.launch
- Top level launch script to launch a single CORA model for use with MOOS-IvP. To be used in conjunction\
- with the `moos-ivp-sim-gazebo/missions/hello-world` mission
+ * Top level launch script to launch a single USV model for use with MOOS-IvP. To be used in conjunction with the `moos-ivp-sim-gazebo/missions/hello-world` mission
+ * Launch Params
+   * `vessel_1_type` Argument to set vessel type to launch associated vessel launch script
+   * `vessel_1_urdf` Argument to set vessel model
+ * Launch Example
+   * $ roslaunch moos_gazebo mit-SP_hello-world.launch vessel_1_type:=wamv vessel_1_urdf:=/home/<USER>/<ROS_WS>/src/gazebo_sim_moos_ivp/moos_gazebo/config/wamv/wamv.urdf
+   * $ roslaunch moos_gazebo mit-SP_hello-world.launch vessel_1_type:=cora vessel_1_urdf:=/home/<USER>/<ROS_WS>/src/gazebo_sim_moos_ivp/moos_gazebo/config/cora/cora.xacro
+ * Copy launch script to your own ROS package and edit for a custom mission
 
 ### ROS Args:
   In addition to the base level args in cora.launch
   * `world` Argument to launch a Gazebo world model
     See `../worlds/mit_SP.world` as an example
 
+
+## Create a custom WAMV URDF
+  * roslaunch vrx_gazebo generate_wamv.launch thruster_yaml:=$PWD/config/wamv/thruster_config.yaml component_yaml:=$PWD/config/wamv/component_config.yaml wamv_target:=<path-to-target-dir>/<name>.urdf
 
