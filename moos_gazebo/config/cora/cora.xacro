@@ -6,7 +6,7 @@
   <xacro:arg name="tf_prefix" default="tf_prefix_not_set"/>
   <xacro:property name="tf_prefix" value="$(arg tf_prefix)" scope="global"/>
   
-  <!-- Include macros for dynamics plugins -->
+  <!-- Include macros for dynamic plugins -->
   <xacro:include filename="$(find punch_bringup)/config/cora/macros.xacro" />
 
   <!-- Attach hydrodynamics plugin -->
