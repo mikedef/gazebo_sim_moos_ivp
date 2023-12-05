@@ -9,11 +9,8 @@
   
   <!-- Launch Asset 1 -->
   <arg name="vessel_1_type" default="cora"/>
-<<<<<<< HEAD
   <arg name="vessel_1_urdf" default="$(find moos_gazebo)/config/cora/cora.xacro"/>
-=======
-  <arg name="vessel_1_urdf" default=""/>
->>>>>>> 06dbdda93f23de89b12eb13c5995ec1affe69d72
+
   <include file="$(find moos_gazebo)/launch/$(arg vessel_1_type).launch" >
     <!-- Set Root Namespace -->
     <arg name="root_namespace" value="asset_1" />
