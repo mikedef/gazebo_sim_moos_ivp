@@ -1,19 +1,19 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://ros.org/wiki/xacro" name="philos">
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="cora">
 
   <xacro:arg name="locked" default="false" />
 
   <xacro:arg name="tf_prefix" default="tf_prefix_not_set"/>
   <xacro:property name="tf_prefix" value="$(arg tf_prefix)" scope="global"/>
   
-  <!-- Include macros for dynamic plugins -->
-  <xacro:include filename="$(find punch_bringup)/config/cora/macros.xacro" />
+  <!-- Include macros for dynamics plugins -->
+  <xacro:include filename="$(find moos_gazebo)/config/cora/macros.xacro" />
 
   <!-- Attach hydrodynamics plugin -->
   <xacro:usv_dynamics_gazebo name="cora_dynamics_plugin" />
 
   <!-- Robot mesh -->
-  <xacro:include filename="$(find punch_bringup)/config/cora/cora.urdf.xacro" />
+  <xacro:include filename="$(find moos_gazebo)/config/cora/cora.urdf.xacro" />
 
   <!-- Note: this is only used for some sensors that do not correctly use the
   robotNamespace parameter -->
@@ -25,15 +25,15 @@
   <xacro:property name="thruster_namespace" value="$(arg thruster_namespace)" scope="global" />
   <xacro:arg name="root_namespace" default="root_namespace_not_set"/>
   <xacro:property name="root_namespace" value="$(arg root_namespace)" scope="global"/>
-  <xacro:include filename="$(find punch_bringup)/config/cora/thrusters.xacro" />
+  <xacro:include filename="$(find moos_gazebo)/config/cora/thrusters.xacro" />
 
   <!-- Decide if we lock the robot to the world -->
   <xacro:if value="$(arg locked)">
     <gazebo>
       <link name="cora_external_link"/>
       <joint name="cora_external_pivot_joint" type="universal">
-        <parent>cora::philos/base_link</parent>
-        <child>philos_external_link</child>
+        <parent>cora::cora/base_link</parent>
+        <child>cora_external_link</child>
         <axis>
           <xyz>1 0 0</xyz>
         </axis>
@@ -43,7 +43,7 @@
       </joint>
       <joint name="cora_external_riser" type="prismatic">
         <parent>world</parent>
-        <child>philos_external_link</child>
+        <child>cora_external_link</child>
         <axis>
           <limit>
             <lower>-3</lower>

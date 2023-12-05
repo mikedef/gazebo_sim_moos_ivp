@@ -117,7 +117,7 @@
     <plugin name="cora_gazebo_thrust" filename="libusv_gazebo_thrust_plugin.so">
       <cmdTimeout>1.0</cmdTimeout>
       <!-- <robotNamespace>${root_namespace}</robotNamespace> -->
-      <xacro:include filename="$(find punch_bringup)/config/cora/cora_thruster_config.xacro" />
+      <xacro:include filename="$(find moos_gazebo)/config/cora/cora_thruster_config.xacro" />
       <!-- Angle must be disabled for VORC -->
       <xacro:cora_thruster_config name="left" />
       <xacro:cora_thruster_config name="right" />

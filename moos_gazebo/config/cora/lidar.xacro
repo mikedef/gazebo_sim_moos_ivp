@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
-  <xacro:include filename="$(find punch_bringup)/config/cora/cora_3d_lidar.xacro"/>
+  <xacro:include filename="$(find moos_gazebo)/config/cora/cora_3d_lidar.xacro"/>
   <xacro:macro name="lidar"
                params = "type:='16_beam'
                          name
