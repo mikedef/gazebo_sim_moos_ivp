@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="rex4">
+
+
+  <!-- Robot Mesh -->
+  <xacro:include filename="$(find wamv_bringup)/urdf/rex4/rex4_base.urdf.xacro"/>
+  <!-- Wamv sinks with rex4 base urdf xacro call
+  <xacro:include filename="$(find wamv_bringup)/urdf/rex4/wamv.urdf"/> -->
+  
+
+  <!-- Note: this is only used for some sensors that do not correctly use 
+       the robotNamespace parameter -->
+  <xacro:arg name="namespace" default="namespace_not_set"/>
+  <xacro:property name="namespace" value="$(arg namespace)" scope="global"/>
+
+
+</robot>
+
