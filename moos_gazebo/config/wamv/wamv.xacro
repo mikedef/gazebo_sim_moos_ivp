@@ -3,9 +3,7 @@
 
 
   <!-- Robot Mesh -->
-  <xacro:include filename="$(find wamv_bringup)/urdf/rex4/rex4_base.urdf.xacro"/>
-  <!-- Wamv sinks with rex4 base urdf xacro call
-  <xacro:include filename="$(find wamv_bringup)/urdf/rex4/wamv.urdf"/> -->
+  <xacro:include filename="$(find moos_gazebo)/config/wamv/wamv_base.urdf.xacro"/> -->
   
 
   <!-- Note: this is only used for some sensors that do not correctly use 

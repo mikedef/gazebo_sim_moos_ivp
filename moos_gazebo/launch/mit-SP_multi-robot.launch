@@ -40,8 +40,7 @@
 
   <!-- Launch Asset 2 -->
   <arg name="vessel_2_type" default="wamv"/>
-  <!-- <arg name="vessel_2_urdf" default="$(find moos_gazebo)/config/wamv/wamv.urdf"/> -->
-  <arg name="vessel_2_urdf" default="$(find moos_gazebo)/config/wamv/wamv.xacro"/>
+  <arg name="vessel_2_urdf" default="$(find moos_gazebo)/config/wamv/wamv.xacro"/> 
 
   <include file="$(find moos_gazebo)/launch/$(arg vessel_2_type).launch" >
     <!-- Set Root Namespace -->
