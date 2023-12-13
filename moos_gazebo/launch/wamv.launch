@@ -57,7 +57,7 @@
 		-urdf -param robot_description -model $(arg root_namespace)"/>
 
     <!-- Publishes static joint transforms (lidar, cameras, etc) to /tf -->
-    <node pkg="robot_state_publisher" type="robot_state_publisher" name="rob_st_pub"/>
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="wamv_st_pub"/>
     <!-- Publishes revolute joint static transforms (gps and imu) to /tf -->
     <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_pub">
       <param name="gui" value="false" />
@@ -82,12 +82,13 @@
       <param name="pub_topic" value="$(arg send_to_gateway_topic)"/>
     </node>
 
-    <!-- Publish robot data -->
+    <!-- Publish robot data     -->
     <node pkg="moos_gazebo_nodes"
 	  type="publish_robot_data.py" name="publish_robot_data" >
       <param name="root_namespace" value="$(arg root_namespace)"/>
       <param name="namespace" value="$(arg namespace)"/>
     </node>
+
 
     <!-- Publish Left/Right Thrust commands from MOOS -->
     <node pkg="moos_gazebo_nodes"
@@ -95,16 +96,10 @@
       <param name="right_thrust_key" value="$(arg right_thrust_key)"/>
       <param name="left_thrust_key" value="$(arg left_thrust_key)"/>
 
-      <!-- Need to fix this for multi-asset WAMV launch. May need to rework wamv to xacro to look like cora or the new VRX ROS2 ver. Also see the engine.xacro and others that would need to be reworked
       <remap from="left_cmd"
 	     to="/$(arg root_namespace)/$(arg namespace)/thrusters/left_thrust_cmd"/>            
       <remap from="right_cmd"
-	     to="/$(arg root_namespace)/$(arg namespace)/thrusters/right_thrust_cmd"/>
-      -->
-      <remap from="left_cmd"
-	     to="/$(arg namespace)/thrusters/left_thrust_cmd"/>            
-      <remap from="right_cmd"
-	     to="/$(arg namespace)/thrusters/right_thrust_cmd"/>
+	     to="/$(arg root_namespace)/$(arg namespace)/thrusters/right_thrust_cmd"/>  
     </node>
   </group>  <!--end  Robot Node launch -->
 

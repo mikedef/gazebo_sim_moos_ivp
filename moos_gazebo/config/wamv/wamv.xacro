@@ -1,15 +1,19 @@
 <?xml version="1.0" ?>
-<robot xmlns:xacro="http://ros.org/wiki/xacro" name="rex4">
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="wamv">
 
-
-  <!-- Robot Mesh -->
-  <xacro:include filename="$(find moos_gazebo)/config/wamv/wamv_base.urdf.xacro"/> -->
-  
+  <xacro:arg name="tf_prefix" default="tf_prefix_not_set"/>   
+  <xacro:property name="tf_prefix" value="$(arg tf_prefix)" scope="global"/>
 
   <!-- Note: this is only used for some sensors that do not correctly use 
        the robotNamespace parameter -->
   <xacro:arg name="namespace" default="namespace_not_set"/>
   <xacro:property name="namespace" value="$(arg namespace)" scope="global"/>
+  
+  <!-- Robot Mesh -->
+  <xacro:include filename="$(find moos_gazebo)/config/wamv/wamv_base_2.urdf.xacro"/> -->
+  
+
+
 
 
 </robot>

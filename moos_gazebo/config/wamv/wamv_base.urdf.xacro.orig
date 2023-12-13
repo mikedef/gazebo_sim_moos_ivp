@@ -1,8 +1,8 @@
 <?xml version="1.0" ?>
-<!-- WAMV Base with namespace changes 2023-12-12 -->
+<!-- WAMV Base 2023-12-12 -->
 <!-- Basic WAM-V with gazebo plugins for dynamics -->
 <robot name="WAM-V">
-  <link name="${tf_prefix}/${namespace}/left_battery_link">
+  <link name="wamv/left_battery_link">
     <visual name="left_battery_visual">
       <origin rpy="0 0 0" xyz="0 -1.03 -.45"/>
       <geometry>
@@ -21,12 +21,12 @@
       <inertia ixx="0.5015291666666667" ixy="0" ixz="0" iyy="0.8931958333333333" iyz="0" izz="1.0183333333333333"/>
     </inertial>
   </link>
-  <joint name="${tf_prefix}/${namespace}/left_chasis_battery_joint" type="fixed">
+  <joint name="wamv/left_chasis_battery_joint" type="fixed">
     <origin rpy="0 0 0" xyz="0 1 0.45"/>
-    <parent link="${tf_prefix}/${namespace}/base_link"/>
-    <child link="${tf_prefix}/${namespace}/left_battery_link"/>
+    <parent link="wamv/base_link"/>
+    <child link="wamv/left_battery_link"/>
   </joint>
-  <link name="${tf_prefix}/${namespace}/right_battery_link">
+  <link name="wamv/right_battery_link">
     <visual name="right_battery_visual">
       <origin rpy="0 0 0" xyz="0 -1.03 -.45"/>
       <geometry>
@@ -45,19 +45,19 @@
       <inertia ixx="0.5015291666666667" ixy="0" ixz="0" iyy="0.8931958333333333" iyz="0" izz="1.0183333333333333"/>
     </inertial>
   </link>
-  <joint name="${tf_prefix}/${namespace}/right_chasis_battery_joint" type="fixed">
+  <joint name="wamv/right_chasis_battery_joint" type="fixed">
     <origin rpy="0 0 0" xyz="0 -1 0.45"/>
-    <parent link="${tf_prefix}/${namespace}/base_link"/>
-    <child link="${tf_prefix}/${namespace}/right_battery_link"/>
+    <parent link="wamv/base_link"/>
+    <child link="wamv/right_battery_link"/>
   </joint>
-  <link name="${tf_prefix}/${namespace}/base_link">
+  <link name="wamv/base_link">
   </link>
-  <joint name="${tf_prefix}/${namespace}/dummy_joint" type="fixed">
-    <parent link="${tf_prefix}/${namespace}/base_link"/>
-    <child link="${tf_prefix}/${namespace}/dummy_link"/>
+  <joint name="wamv/dummy_joint" type="fixed">
+    <parent link="wamv/base_link"/>
+    <child link="wamv/dummy_link"/>
   </joint>
   <!-- Basic model of the 16' WAM-V USV -->
-  <link name="${tf_prefix}/${namespace}/dummy_link">
+  <link name="wamv/dummy_link">
     <visual>
       <geometry>
         <mesh filename="package://wamv_description/models/WAM-V-Base/mesh/WAM-V-Base.dae"/>
@@ -230,7 +230,7 @@
       <inertia ixx="120.0" ixy="0.0" ixz="0.0" iyy="393" iyz="0.0" izz="446.0"/>
     </inertial>
   </link>
-  <link name="${tf_prefix}/${namespace}/left_engine_link">
+  <link name="wamv/left_engine_link">
     <visual>
       <geometry>
         <mesh filename="package://wamv_description/models/engine/mesh/engine.dae"/>
@@ -253,7 +253,7 @@
       <inertia ixx="0.889245" ixy="0.0" ixz="0.0" iyy="0.911125" iyz="0.0" izz="0.078125"/>
     </inertial>
   </link>
-  <link name="${tf_prefix}/${namespace}/left_propeller_link">
+  <link name="wamv/left_propeller_link">
     <visual>
       <geometry>
         <mesh filename="package://wamv_description/models/propeller/mesh/propeller.dae"/>
@@ -270,22 +270,22 @@
       <inertia ixx="0.008545" ixy="0.0" ixz="0.0" iyy="0.008545" iyz="0.0" izz="0.0144"/>
     </inertial>
   </link>
-  <joint name="${tf_prefix}/${namespace}/left_chasis_engine_joint" type="revolute">
+  <joint name="wamv/left_chasis_engine_joint" type="revolute">
     <axis xyz="0 0 1"/>
     <limit effort="10" lower="-3.141592653589793" upper="3.141592653589793" velocity="10"/>
     <origin rpy="0.0 0.0 0.0" xyz="-2.373776 1.027135 0.318237"/>
-    <parent link="${tf_prefix}/${namespace}/base_link"/>
-    <child link="${tf_prefix}/${namespace}/left_engine_link"/>
+    <parent link="wamv/base_link"/>
+    <child link="wamv/left_engine_link"/>
   </joint>
-  <joint name="${tf_prefix}/${namespace}/left_engine_propeller_joint" type="continuous">
+  <joint name="wamv/left_engine_propeller_joint" type="continuous">
     <axis rpy="0 0 0" xyz="1 0 0"/>
-    <parent link="${tf_prefix}/${namespace}/left_engine_link"/>
-    <child link="${tf_prefix}/${namespace}/left_propeller_link"/>
+    <parent link="wamv/left_engine_link"/>
+    <child link="wamv/left_propeller_link"/>
     <origin rpy="0 0 0" xyz="-0.278156 0 -0.509371"/>
     <limit effort="100" velocity="100"/>
     <dynamics damping="0.05" friction="0.05"/>
   </joint>
-  <link name="${tf_prefix}/${namespace}/right_engine_link">
+  <link name="wamv/right_engine_link">
     <visual>
       <geometry>
         <mesh filename="package://wamv_description/models/engine/mesh/engine.dae"/>
@@ -308,7 +308,7 @@
       <inertia ixx="0.889245" ixy="0.0" ixz="0.0" iyy="0.911125" iyz="0.0" izz="0.078125"/>
     </inertial>
   </link>
-  <link name="${tf_prefix}/${namespace}/right_propeller_link">
+  <link name="wamv/right_propeller_link">
     <visual>
       <geometry>
         <mesh filename="package://wamv_description/models/propeller/mesh/propeller.dae"/>
@@ -325,17 +325,17 @@
       <inertia ixx="0.008545" ixy="0.0" ixz="0.0" iyy="0.008545" iyz="0.0" izz="0.0144"/>
     </inertial>
   </link>
-  <joint name="${tf_prefix}/${namespace}/right_chasis_engine_joint" type="revolute">
+  <joint name="wamv/right_chasis_engine_joint" type="revolute">
     <axis xyz="0 0 1"/>
     <limit effort="10" lower="-3.141592653589793" upper="3.141592653589793" velocity="10"/>
     <origin rpy="0.0 0.0 0.0" xyz="-2.373776 -1.027135 0.318237"/>
-    <parent link="${tf_prefix}/${namespace}/base_link"/>
-    <child link="${tf_prefix}/${namespace}/right_engine_link"/>
+    <parent link="wamv/base_link"/>
+    <child link="wamv/right_engine_link"/>
   </joint>
-  <joint name="${tf_prefix}/${namespace}/right_engine_propeller_joint" type="continuous">
+  <joint name="wamv/right_engine_propeller_joint" type="continuous">
     <axis rpy="0 0 0" xyz="1 0 0"/>
-    <parent link="${tf_prefix}/${namespace}/right_engine_link"/>
-    <child link="${tf_prefix}/${namespace}/right_propeller_link"/>
+    <parent link="wamv/right_engine_link"/>
+    <child link="wamv/right_propeller_link"/>
     <origin rpy="0 0 0" xyz="-0.278156 0 -0.509371"/>
     <limit effort="100" velocity="100"/>
     <dynamics damping="0.05" friction="0.05"/>
@@ -343,14 +343,14 @@
   <gazebo>
     <plugin filename="libusv_gazebo_thrust_plugin.so" name="wamv_gazebo_thrust">
       <cmdTimeout>1.0</cmdTimeout>
-      <!-- <robotNamespace>wamv</robotNamespace> -->
+      <robotNamespace>wamv</robotNamespace>
       <thruster>
         <!-- Required Parameters -->
-        <linkName>${tf_prefix}/${namespace}/left_propeller_link</linkName>
-        <propJointName>${tf_prefix}/${namespace}/left_engine_propeller_joint</propJointName>
-        <engineJointName>${tf_prefix}/${namespace}/left_chasis_engine_joint</engineJointName>
-        <cmdTopic>${namespace}/thrusters/left_thrust_cmd</cmdTopic>
-        <angleTopic>${namespace}/thrusters/left_thrust_angle</angleTopic>
+        <linkName>wamv/left_propeller_link</linkName>
+        <propJointName>wamv/left_engine_propeller_joint</propJointName>
+        <engineJointName>wamv/left_chasis_engine_joint</engineJointName>
+        <cmdTopic>thrusters/left_thrust_cmd</cmdTopic>
+        <angleTopic>thrusters/left_thrust_angle</angleTopic>
         <enableAngle>True</enableAngle>
         <!-- Optional Parameters -->
         <mappingType>1</mappingType>
@@ -361,11 +361,11 @@
       </thruster>
       <thruster>
         <!-- Required Parameters -->
-        <linkName>${tf_prefix}/${namespace}/right_propeller_link</linkName>
-        <propJointName>${tf_prefix}/${namespace}/right_engine_propeller_joint</propJointName>
-        <engineJointName>${tf_prefix}/${namespace}/right_chasis_engine_joint</engineJointName>
-        <cmdTopic>${namespace}/thrusters/right_thrust_cmd</cmdTopic>
-        <angleTopic>${namespace}/thrusters/right_thrust_angle</angleTopic>
+        <linkName>wamv/right_propeller_link</linkName>
+        <propJointName>wamv/right_engine_propeller_joint</propJointName>
+        <engineJointName>wamv/right_chasis_engine_joint</engineJointName>
+        <cmdTopic>thrusters/right_thrust_cmd</cmdTopic>
+        <angleTopic>thrusters/right_thrust_angle</angleTopic>
         <enableAngle>True</enableAngle>
         <!-- Optional Parameters -->
         <mappingType>1</mappingType>
@@ -379,13 +379,13 @@
   <!-- custom plugin -->
   <gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-      <robotNamespace>/${namespace}</robotNamespace>
+      <robotNamespace>/wamv</robotNamespace>
     </plugin>
   </gazebo>
   <!--Gazebo Plugin for simulating WAM-V dynamics-->
   <gazebo>
     <plugin filename="libusv_gazebo_dynamics_plugin.so" name="usv_dynamics_wamv_dynamics_plugin">
-      <bodyName>${tf_prefix}/${namespace}/base_link</bodyName>
+      <bodyName>wamv/base_link</bodyName>
       <!-- Must be same as the ocean model!-->
       <waterLevel>0</waterLevel>
       <waterDensity>997.8</waterDensity>
