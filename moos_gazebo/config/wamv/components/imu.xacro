@@ -26,8 +26,8 @@
       <plugin name="imu_plugin_${name}" filename="libhector_gazebo_ros_imu.so">
         <updateRate>${update_rate}</updateRate>
         <bodyName>${tf_prefix}/${namespace}/${name}_link</bodyName>
-        <topicName>${tf_prefix}/${namespace}/${sensor_namespace}imu/imu/data</topicName>
-        <serviceName>${tf_prefix}/${namespace}/${sensor_namespace}imu_service</serviceName>
+        <topicName>${namespace}/${sensor_namespace}imu/imu/data</topicName>
+        <serviceName>${namespace}/${sensor_namespace}imu_service</serviceName>
         <!-- Manually prepend namespace to tf frame. -->
         <frameId>${tf_prefix}/${namespace}/${name}_link</frameId>
         <alwaysOn>true</alwaysOn>

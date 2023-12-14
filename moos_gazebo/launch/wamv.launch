@@ -20,7 +20,7 @@
   <arg name="right_thrust_key" default="COMMANDED_THRUST_R"/>
   <arg name="left_thrust_key" default="COMMANDED_THRUST_L"/>
   <!-- protobuf_client -->
-  <arg name="gateway_port" default="9501"/>
+  <arg name="gateway_port" default="9502"/>
   <!-- end MOOS Params  -->
 
   <!-- USV location and attitude-->
