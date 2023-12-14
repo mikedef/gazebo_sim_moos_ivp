@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>                                                                                  
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="wamv">
+
+  <!-- Sensor Macros -->
+  <xacro:include filename="$(find moos_gazebo)/config/wamv/components/camera.xacro" />
+  <xacro:include filename="$(find moos_gazebo)/config/wamv/components/lidar.xacro" />
+  <xacro:include filename="$(find moos_gazebo)/config/wamv/components/imu.xacro" />
+  <xacro:include filename="$(find moos_gazebo)/config/wamv/components/gps.xacro" />
+  <xacro:include filename="$(find moos_gazebo)/config/wamv/components/radar.xacro" />
+  
+</robot>

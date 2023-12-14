@@ -5,7 +5,7 @@
   <rosparam param="silent_tf_failure">true</rosparam>
 
   <!-- Load TARGET robot model -->         
-  <arg name="urdf" default="$(find moos_gazebo)/config/wamv/wamv.urdf"/>
+  <arg name="urdf" default="$(find moos_gazebo)/config/wamv/wamv.xacro"/>
   <!-- Target vessel namespace -->
   <arg name="root_namespace" default="not_set"/>
   <arg name="namespace" default="wamv"/>
