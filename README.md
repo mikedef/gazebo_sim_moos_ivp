@@ -4,7 +4,7 @@ Repository to simulate a marine vessel in the Gazebo simulation environment. Thi
 * Available vessels
   * CORA USV
   * WAM-V USV
-  * Heron USV
+  * Heron USV (TODO)
 
 ## moos_gazebo
 ## Launch Files
@@ -13,7 +13,7 @@ Repository to simulate a marine vessel in the Gazebo simulation environment. Thi
   Base launch script for a custom CORA model in Gazebo
 ### wamv.launch
   Base launch script for a custom WAM-V model in Gazebo
-### heron.launch
+### heron.launch (TODO)
   Base launch script for a custom Heron model in Gazebo
 ### mit-SP_hello-world.launch
   Top level launch script to launch a single USV model for use with MOOS-IvP. To be used in conjunction with the `moos-ivp-sim-gazebo/missions/hello-world` mission
@@ -34,6 +34,7 @@ Repository to simulate a marine vessel in the Gazebo simulation environment. Thi
     * Node to publish MOOS-IvP thrust data to vessel left/right thrusters
   * thrust_vessel.py
     * Node to publish COMMANDED_THRUST_LEFT and COMMANDED_THRUST_RIGHT data directly from MOOS-IvP
+    * Control comes from the MOOS based pMarinePID 
 
 ## Notes
 * 
