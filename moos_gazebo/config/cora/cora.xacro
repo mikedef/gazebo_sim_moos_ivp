@@ -79,7 +79,8 @@
   <xacro:cora_imu name="imu" y="-0.2" z="1.0" update_rate="100" />
 
   <xacro:if value="$(arg fiducial)">
-    <xacro:cora_aruco name="aruco" />
+    <xacro:cora_aruco name="starboard_aruco" x="-1.0" y="1.0" z="4.0" R="0" P="0" Y="1.57"  />
+    <xacro:cora_aruco name="port_aruco" x="-1.0" y="-1.0" z="4.0" R="0" P="0" Y="1.57"  /> 
   </xacro:if>
 
 </robot>

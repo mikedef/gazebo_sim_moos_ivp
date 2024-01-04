@@ -39,13 +39,13 @@
       </inertial>
     </link>
 
-    <joint name="aruco_joint" type="fixed">
+    <joint name="${name}_joint" type="fixed">
       <parent link="${tf_prefix}/${namespace}/base_link"/>
       <child link="${tf_prefix}/${namespace}/${name}_link"/>
-      <origin xyz="-1.0 1.0 4.0" rpy="0 0 1.57"/>
+      <origin xyz="${x} ${y} ${z}" rpy="${R} ${P} ${Y}"/>
     </joint>
 
-    <link name="aruco_marker">
+    <link name="${name}_marker">
       <collision>
 	<origin xyz="0 0 0" rpy="0 0 0"/>
 	<geometry>
@@ -61,12 +61,13 @@
       </visual>
     </link>
 
-    <joint name="aruco_marker_link" type="fixed">
+    <joint name="${name}_marker_link" type="fixed">
       <parent link="${tf_prefix}/${namespace}/base_link"/>
-      <child  link="aruco_marker"/>
-      <origin xyz="-1.0 1.01 4.0" rpy="0 0 1.57"/>
+      <child  link="${name}_marker"/>
+      <origin xyz="${x} ${y}1 ${z}" rpy="${R} ${P} ${Y}"/>
+      <!-- add 1 to end of y to place marker on top of board -->
     </joint>
-    <gazebo reference="aruco_marker">
+    <gazebo reference="${name}_marker">
       <material>aruco_26</material>
     </gazebo>
 
