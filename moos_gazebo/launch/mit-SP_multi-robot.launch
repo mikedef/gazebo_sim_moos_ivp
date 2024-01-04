@@ -51,7 +51,7 @@
 
     <arg name="fiducial" value="true"/>
     <!-- Set robot spawn point -->
-    <arg name="x" value="30" />                            
+    <arg name="x" value="50" />                            
     <arg name="y" value="-50" />          
     <arg name="z" value="0.1" />             
     <arg name="P" value="0" />                       
