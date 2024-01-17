@@ -2,7 +2,7 @@
 <launch>
   <!-- Launch Simulated World in Gazebo-->
   <include file="$(find moos_gazebo)/launch/world.launch" >
-    <!-- Gazebo world to load -->                                           
+    <!-- Gazebo world to load -->
     <arg name="world" value="$(find moos_gazebo)/worlds/mit_SP.world" />
   </include>
 
@@ -16,13 +16,13 @@
     <arg name="tf_prefix" value="asset_1"/>
     <!-- <arg name="sensors" value="true"/> -->
     <arg name="urdf" value="$(arg vessel_1_urdf)"/>
-    
+
     <!-- Set robot spawn point -->
-    <arg name="x" value="40" />                                                
-    <arg name="y" value="-50" />                                      
-    <arg name="z" value="0.1" />                                       
-    <arg name="P" value="0" />                                    
-    <arg name="R" value="0" />                        
+    <arg name="x" value="40" />
+    <arg name="y" value="-50" />
+    <arg name="z" value="0.1" />
+    <arg name="P" value="0" />
+    <arg name="R" value="0" />
     <arg name="Y" value="-1.57" />
 
     <!-- Set key to ASSET_* or TARGET_* -->
@@ -32,7 +32,7 @@
     <arg name="left_thrust_key" value="ASSET_1_COMMANDED_THRUST_L"/>
     <arg name="right_thrust_key" value="ASSET_1_COMMANDED_THRUST_R"/>
 
-    <!-- Protobuf gateway port 
+    <!-- Protobuf gateway port
          Must reflect GPORT in MOOS mission launch.sh-->
     <arg name="gateway_port" value="9501" />
   </include>
@@ -40,7 +40,7 @@
 
   <!-- Launch Asset 2 -->
   <arg name="vessel_2_type" default="wamv"/>
-  <arg name="vessel_2_urdf" default="$(find moos_gazebo)/config/wamv/wamv.xacro"/> 
+  <arg name="vessel_2_urdf" default="$(find moos_gazebo)/config/wamv/wamv.xacro"/>
 
   <include file="$(find moos_gazebo)/launch/$(arg vessel_2_type).launch" >
     <!-- Set Root Namespace -->
@@ -51,11 +51,11 @@
 
     <arg name="fiducial" value="true"/>
     <!-- Set robot spawn point -->
-    <arg name="x" value="50" />                            
-    <arg name="y" value="-50" />          
-    <arg name="z" value="0.1" />             
-    <arg name="P" value="0" />                       
-    <arg name="R" value="0" />                             
+    <arg name="x" value="50" />
+    <arg name="y" value="-50" />
+    <arg name="z" value="0.1" />
+    <arg name="P" value="0" />
+    <arg name="R" value="0" />
     <arg name="Y" value="-1.57" />
 
     <!-- Set key to ASSET_* or TARGET_* -->
@@ -65,7 +65,7 @@
     <arg name="left_thrust_key" value="ASSET_2_COMMANDED_THRUST_L"/>
     <arg name="right_thrust_key" value="ASSET_2_COMMANDED_THRUST_R"/>
 
-    <!-- Protobuf gateway port 
+    <!-- Protobuf gateway port
          Must reflect GPORT in MOOS mission launch.sh-->
     <arg name="gateway_port" value="9502" />
   </include>

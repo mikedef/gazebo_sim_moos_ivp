@@ -15,14 +15,14 @@
 	  <box size="0.0001 0.5 0.5"/>
 	</geometry>
 	<material name="front_visual_texture">
-          <script>                                                                                      
-            <uri>model://aruco_marker/marker_5/scripts</uri>                                           
-            <uri>model://aruco_marker/marker_5/textures</uri>                                          
-            <name>aruco_5</name>                                                                        
+          <script>
+            <uri>model://aruco_marker/marker_5/scripts</uri>
+            <uri>model://aruco_marker/marker_5/textures</uri>
+            <name>aruco_5</name>
           </script>
 	</material>
       </visual>
-      
+
       <visual name="rear_visual">
 	<origin xyz="0.00005 0 0" rpy="0 0 0"/>
 	<geometry>

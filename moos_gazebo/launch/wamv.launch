@@ -4,7 +4,7 @@
   <!-- Supress tf warnings -->
   <rosparam param="silent_tf_failure">true</rosparam>
 
-  <!-- Load TARGET robot model -->         
+  <!-- Load TARGET robot model -->
   <arg name="urdf" default="$(find moos_gazebo)/config/wamv/wamv.xacro"/>
   <!-- Target vessel namespace -->
   <arg name="root_namespace" default="not_set"/>
@@ -12,11 +12,11 @@
   <arg name="tf_prefix" default="not_set"/>
   <arg name="fiducial" default="false"/>
   <arg name="sensors" default="false"/>
-  
+
   <!-- MOOS Params  -->
   <!-- Gateway Key: Sets key for robot node report, prefix as as ASSET_<#> or TARGET<#> -->
   <arg name="gateway_key" default="_NODE_REPORT_GAZEBO"/>
-  <!-- thrust_vessel --> 
+  <!-- thrust_vessel -->
   <arg name="right_thrust_key" default="COMMANDED_THRUST_R"/>
   <arg name="left_thrust_key" default="COMMANDED_THRUST_L"/>
   <!-- protobuf_client -->
@@ -30,20 +30,19 @@
   <arg name="P" default="0" />
   <arg name="R" default="0" />
   <arg name="Y" default="-1.57" />
-  
+
   <!-- Robot Node Launch -->
   <group ns="$(arg root_namespace)">
 
     <!-- Topic to send to gateway -->
     <arg name="send_to_gateway_topic" default="/send_to_gateway_$(arg root_namespace)"/>
-    
-    
+
     <!-- Lock the vessel to the target world? -->
     <arg name="robot_locked" default="false" />
-  
+
     <param name="robot_description"
-	   command="$(find xacro)/xacro '$(arg urdf)'             
-		    locked:=$(arg robot_locked) 
+	   command="$(find xacro)/xacro '$(arg urdf)'
+		    locked:=$(arg robot_locked)
 		    namespace:=$(arg namespace)
 		    root_namespace:=$(arg root_namespace)
 		    tf_prefix:=$(arg tf_prefix)
@@ -51,9 +50,9 @@
 		    sensors:=$(arg sensors)"/>
 
     <!-- Spawn model in Gazebo -->
-    <node name="spawn_target_model" pkg="gazebo_ros" type="spawn_model"  
-          args="-x $(arg x) -y $(arg y) -z $(arg z)    
-		-R $(arg R) -P $(arg P) -Y $(arg Y)                    
+    <node name="spawn_target_model" pkg="gazebo_ros" type="spawn_model"
+          args="-x $(arg x) -y $(arg y) -z $(arg z)
+		-R $(arg R) -P $(arg P) -Y $(arg Y)
 		-urdf -param robot_description -model $(arg root_namespace)"/>
 
     <!-- Publishes static joint transforms (lidar, cameras, etc) to /tf -->
@@ -66,7 +65,7 @@
     <!-- launch protobuf_client -->
     <node pkg="protobuf_client"
 	  type="protobuf_client" name="protobuf_client" >
-      <param name="gateway_port" value="$(arg gateway_port)"/>  
+      <param name="gateway_port" value="$(arg gateway_port)"/>
       <param name="gateway_ip" value="127.0.0.1"/>
       <param name="send_to_gateway_topic" value="$(arg send_to_gateway_topic)"/>
     </node>
@@ -97,11 +96,10 @@
       <param name="left_thrust_key" value="$(arg left_thrust_key)"/>
 
       <remap from="left_cmd"
-	     to="/$(arg root_namespace)/$(arg namespace)/thrusters/left_thrust_cmd"/>            
+	     to="/$(arg root_namespace)/$(arg namespace)/thrusters/left_thrust_cmd"/>
       <remap from="right_cmd"
-	     to="/$(arg root_namespace)/$(arg namespace)/thrusters/right_thrust_cmd"/>  
+	     to="/$(arg root_namespace)/$(arg namespace)/thrusters/right_thrust_cmd"/>
     </node>
   </group>  <!--end  Robot Node launch -->
 
-    
 </launch>
