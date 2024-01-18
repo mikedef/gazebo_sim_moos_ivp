@@ -16,8 +16,8 @@
 	</geometry>
 	<material name="front_visual_texture">
           <script>
-            <uri>model://aruco_marker/marker_5/scripts</uri>
-            <uri>model://aruco_marker/marker_5/textures</uri>
+            <uri>model://aruco_models/aruco_26/scripts</uri>
+            <uri>model://aruco_models/aruco_26/textures</uri>
             <name>aruco_5</name>
           </script>
 	</material>
@@ -69,6 +69,11 @@
     </joint>
     <gazebo reference="${name}_marker">
       <material>aruco_26</material>
+      <script>
+            <uri>model://aruco_models/materials/scripts</uri>
+            <uri>model://aruco_models/materials/textures</uri>
+            <name>aruco_26</name>
+      </script>
     </gazebo>
 
     <gazebo reference="${tf_prefix}/${namespace}/${name}_link">
