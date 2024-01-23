@@ -10,8 +10,9 @@
   <xacro:include filename="$(find moos_gazebo)/config/cora/cora_3d_lidar.xacro" />
   <xacro:include filename="$(find moos_gazebo)/config/cora/lidar.xacro" />
   <xacro:include filename="$(find moos_gazebo)/config/cora/cora_p3d.xacro" />
-  <!--   -->
+  <!-- Fiducials  -->
   <xacro:include filename="$(find moos_gazebo)/config/cora/cora_aruco.xacro" />
+  <xacro:include filename="$(find moos_gazebo)/config/cora/cora_april.xacro" />
 
   <!-- Include dynamics macros -->
   <xacro:include filename="$(find moos_gazebo)/config/cora/cora_dynamics_plugin.xacro" />

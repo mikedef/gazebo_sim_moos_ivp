@@ -5,7 +5,7 @@
 
   <xacro:arg name="tf_prefix" default="tf_prefix_not_set"/>
   <xacro:property name="tf_prefix" value="$(arg tf_prefix)" scope="global"/>
-  
+
   <!-- Include macros for dynamics plugins -->
   <xacro:include filename="$(find moos_gazebo)/config/cora/macros.xacro" />
 
@@ -63,24 +63,28 @@
   <xacro:property name="sensor_namespace" value="$(arg sensor_namespace)" scope="global" />
 
   <xacro:if value="$(arg sensors)">
-    <xacro:cora_camera name="front_left_camera"  x="-0.61" y="0.2"  z="4.7" 
+    <xacro:cora_camera name="front_left_camera"  x="-0.61" y="0.2"  z="4.7"
 		       post_z_from="4.6" P="${radians(15)}" Y="${radians(60)}" />
-    <xacro:cora_camera name="front_center_camera"  x="-0.61" y="0.0"  z="4.7" 
+    <xacro:cora_camera name="front_center_camera"  x="-0.61" y="0.0"  z="4.7"
 		       post_z_from="4.6" P="${radians(15)}" />
-    <xacro:cora_camera name="front_right_camera" x="-0.61" y="-0.2" z="4.7" 
+    <xacro:cora_camera name="front_right_camera" x="-0.61" y="-0.2" z="4.7"
 		       post_z_from="4.6" P="${radians(15)}" Y="${radians(-60)}" />
-    <xacro:cora_camera name="side_right_camera" x="-0.75" y="-0.67" z="4.65" 
+    <xacro:cora_camera name="side_right_camera" x="-0.75" y="-0.67" z="4.65"
 		       post_z_from="4.55" P="${radians(15)}" Y="${radians(-90)}" />
-    <xacro:lidar name="front_lidar" type="16_beam" x="-1.1" z="5" 
+    <xacro:lidar name="front_lidar" type="16_beam" x="-1.1" z="5"
 		 P="${radians(0)}" post_z_from="4.6"/>  <!-- x="-0.595" -->
   </xacro:if>
-  <xacro:cora_gps name="gps" x="-1.0" z="4.6" 
+  <xacro:cora_gps name="gps" x="-1.0" z="4.6"
   	update_rate="20" />
   <xacro:cora_imu name="imu" y="-0.2" z="1.0" update_rate="100" />
 
   <xacro:if value="$(arg fiducial)">
-    <xacro:cora_aruco name="starboard_aruco" x="-1.0" y="1.0" z="4.0" R="0" P="0" Y="1.57"  />
-    <xacro:cora_aruco name="port_aruco" x="-1.0" y="-1.0" z="4.0" R="0" P="0" Y="1.57"  /> 
+    <xacro:cora_april name="starboard_april" tag_name="april_tag36_11_00001"
+		      x="-1.0" y="1.0" z="4.0" R="0" P="0" Y="1.57"  />
+    <!-- <xacro:cora_aruco name="starboard_aruco" x="-1.0" y="1.0" z="4.0" R="0" P="0" Y="1.57"  />
+    <xacro:cora_aruco name="port_aruco" x="-1.0" y="-1.0" z="4.0" R="0" P="0" Y="1.57"  /> -->
+    <xacro:cora_april name="port_april" tag_name="april_tag36_11_00000"
+		      x="-1.0" y="-1.0" z="4.0" R="0" P="0" Y="1.57"  />
   </xacro:if>
 
 </robot>
