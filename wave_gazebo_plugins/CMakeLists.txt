@@ -31,6 +31,8 @@ endif()
 find_package(catkin REQUIRED COMPONENTS gazebo_ros)
 find_package(gazebo REQUIRED)
 find_package(Eigen3 REQUIRED)
+find_package(Boost REQUIRED)
+Set(dart "/usr/include/dart/include")
 
 ############################################################################### 
 # Catkin...
