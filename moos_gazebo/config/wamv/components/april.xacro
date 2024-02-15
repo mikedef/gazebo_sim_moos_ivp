@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:macro name="april" params="name:=april tag_name:=april_tag36_11_00000
+					 x:=0.3 y:=0.5 z:=1.3 R:=0 P:=0 Y:=0 ">
+    <link name="${tf_prefix}/${namespace}/${name}_link">
+      <collision>
+	<origin xyz="0 0 0" rpy="0 0 0"/>
+	<geometry>
+	  <box size="0.0001 0.5 0.5" />
+	</geometry>
+      </collision>
+
+      <visual name="front_visual">
+	<origin xyz="0.00005 0 0" rpy="0 0 0"/>
+	<geometry>
+	  <box size="0.0001 0.5 0.5"/>
+	</geometry>
+	<material name="front_visual_texture">
+          <script>
+            <uri>model://april_models/materials/scripts</uri>
+            <uri>model://april_models/materials/textures</uri>
+            <name>april_tag36_11_00000</name>
+          </script>
+	</material>
+      </visual>
+
+      <visual name="rear_visual">
+	<origin xyz="0.00005 0 0" rpy="0 0 0"/>
+	<geometry>
+	  <box size="0.0001 0.55 0.55"/> <!-- Larger background for white boarder -->
+	</geometry>
+      </visual>
+
+      <inertial>
+	<origin xyz="0 0 0" rpy="0 0 0"/>
+	<mass value="0.01"/>
+	<inertia
+	    ixx="3.74e-06" ixy="0.0" ixz="0.0"
+	    iyy="1.875e-06" iyz="0.0" izz="1.875e-06"/>
+      </inertial>
+    </link>
+
+    <joint name="${name}_joint" type="fixed">
+      <parent link="${tf_prefix}/${namespace}/base_link"/>
+      <child link="${tf_prefix}/${namespace}/${name}_link"/>
+      <origin xyz="${x} ${y} ${z}" rpy="${R} ${P} ${Y}"/>
+    </joint>
+
+    <link name="${name}_marker">
+      <collision>
+	<origin xyz="0 0 0" rpy="0 0 0"/>
+	<geometry>
+	  <box size="0.0001 0.5 0.5" />
+	</geometry>
+      </collision>
+
+      <visual>
+	<origin xyz="0.00005 0 0" rpy="0 0 0"/>
+	<geometry>
+	  <box size="0.0001 0.5 0.5"/>
+	</geometry>
+      </visual>
+    </link>
+
+    <joint name="${name}_marker_link" type="fixed">
+      <parent link="${tf_prefix}/${namespace}/base_link"/>
+      <child  link="${name}_marker"/>
+      <origin xyz="${x} ${y}1 ${z}" rpy="${R} ${P} ${Y}"/>
+      <!-- add 1 to end of y to place marker on top of board -->
+    </joint>
+    <gazebo reference="${name}_marker">
+      <material>april_tag36_11_00000</material>
+      <script>
+            <uri>model://april_models/materials/scripts</uri>
+            <uri>model://april_models/materials/textures</uri>
+            <name>april_tag36_11_00000</name>
+      </script>
+    </gazebo>
+
+    <gazebo reference="${tf_prefix}/${namespace}/${name}_link">
+      <material>april_tag36_11_00000</material>
+    </gazebo>
+
+    <gazebo reference="front_visual">
+      <material>april_tag36_11_00000</material>
+    </gazebo>
+
+
+  </xacro:macro>
+</robot>
