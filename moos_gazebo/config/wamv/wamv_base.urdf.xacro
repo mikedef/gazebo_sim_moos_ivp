@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <!-- WAMV Base with namespace changes 2023-12-12 -->
 <!-- Basic WAM-V with gazebo plugins for dynamics -->
-<robot name="WAM-V">
+<robot name="wamv">
   <link name="${tf_prefix}/${namespace}/left_battery_link">
     <visual name="left_battery_visual">
       <origin rpy="0 0 0" xyz="0 -1.03 -.45"/>

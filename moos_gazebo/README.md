@@ -6,34 +6,31 @@ Launch files for each vehicle as well as sample launch files for full simulation
 
 ### cora.launch
 Base launch script for the custom CORA vessel
-#### ROS Args:                                                                                          
-  * `urdf` Argument to define where to look for vehicle URDF					       
+#### ROS Args:
+  * `urdf` Argument to define where to look for vehicle URDF
   * `root_namespace` Argument to prefix root_namespace  (ex: asset_1), used for namespacing in ROS
-  * `namespace` Argument to prefix namespace, used in creation of multiple assets  (ex: cora)           
-  * `tf_prefix` Argument to prefix name of vessel, Ex: asset_1                                          
-  * `sensors` Argument to turn off perception sensors on the vessel                                     
-  * `gateway_key` Argument to prefix _NODE_REPORT_GAZEBO msg sent by `compose_contact_report` to MOOS-Iv
-P                                                                                                       
-  * `right_thrust_key` Argument to process right thrust data from MOOS-IvP                              
-  * `left_thrust_key` Argument to process left thrust data from MOOS-IvP                                
+  * `namespace` Argument to prefix namespace, used in creation of multiple assets  (ex: cora)
+  * `tf_prefix` Argument to prefix name of vessel, Ex: asset_1
+  * `sensors` Argument to turn off perception sensors on the vessel
+  * `gateway_key` Argument to prefix _NODE_REPORT_GAZEBO msg sent by `compose_contact_report` to MOOS-IvP
+  * `right_thrust_key` Argument to process right thrust data from MOOS-IvP
+  * `left_thrust_key` Argument to process left thrust data from MOOS-IvP
   * `gateway_port` Argument to set the port for `protobuf_client` to communicate with the MOOS-IvP vesse
-l community                                                                                             
+l community
   * `USV location and attitude` Arguments to set vessel location `x,y,z,R,P,Y`
 
 ### wamv.launch
 Base launch script for the custom WAM-V vessel
-#### ROS Args:                                                                                          
-  * `urdf` Argument to define where to look for vehicle URDF 
-  * `root_namespace` Argument to prefix root_namespace  (ex: asset_1), used for namespacing in ROS    
-  * `namespace` Argument to prefix namespace, used in creation of multiple assets  (ex: wamv)            
-  * `tf_prefix` Argument to prefix name of vessel, Ex: asset_2                                          
-  * `sensors` Argument to turn off perception sensors on the vessel                                     
-  * `gateway_key` Argument to prefix _NODE_REPORT_GAZEBO msg sent by `compose_contact_report` to MOOS-Iv
-P                                                                                                       
-  * `right_thrust_key` Argument to process right thrust data from MOOS-IvP                              
-  * `left_thrust_key` Argument to process left thrust data from MOOS-IvP                                
-  * `gateway_port` Argument to set the port for `protobuf_client` to communicate with the MOOS-IvP vesse
-l community                                                                                             
+#### ROS Args:
+  * `urdf` Argument to define where to look for vehicle URDF
+  * `root_namespace` Argument to prefix root_namespace  (ex: asset_1), used for namespacing in ROS
+  * `namespace` Argument to prefix namespace, used in creation of multiple assets  (ex: wamv)
+  * `tf_prefix` Argument to prefix name of vessel, Ex: asset_2
+  * `sensors` Argument to turn off perception sensors on the vessel
+  * `gateway_key` Argument to prefix _NODE_REPORT_GAZEBO msg sent by `compose_contact_report` to MOOS-IvP
+  * `right_thrust_key` Argument to process right thrust data from MOOS-IvP
+  * `left_thrust_key` Argument to process left thrust data from MOOS-IvP
+  * `gateway_port` Argument to set the port for `protobuf_client` to communicate with the MOOS-IvP vessel community
   * `USV location and attitude` Arguments to set vessel location `x,y,z,R,P,Y`
 
 

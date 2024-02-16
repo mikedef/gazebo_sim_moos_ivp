@@ -2,11 +2,10 @@
 <launch>
   <!-- Launch Simulated World in Gazebo-->
   <include file="$(find moos_gazebo)/launch/world.launch" >
-    <!-- Gazebo world to load -->                                           
+    <!-- Gazebo world to load -->
     <arg name="world" value="$(find moos_gazebo)/worlds/mit_SP.world" />
   </include>
 
-  
   <!-- Launch Asset 1 -->
   <arg name="vessel_1_type" default="cora"/>
   <arg name="vessel_1_urdf" default="$(find moos_gazebo)/config/cora/cora.xacro"/>
@@ -17,13 +16,13 @@
     <arg name="tf_prefix" value="asset_1"/>
     <arg name="sensors" value="true"/>
     <arg name="urdf" value="$(arg vessel_1_urdf)"/>
-    
+
     <!-- Set robot spawn point -->
-    <arg name="x" value="40" />                                                
-    <arg name="y" value="-50" />                                      
-    <arg name="z" value="0.1" />                                       
-    <arg name="P" value="0" />                                    
-    <arg name="R" value="0" />                        
+    <arg name="x" value="40" />
+    <arg name="y" value="-50" />
+    <arg name="z" value="0.1" />
+    <arg name="P" value="0" />
+    <arg name="R" value="0" />
     <arg name="Y" value="-1.57" />
 
     <!-- Set key to ASSET_* or TARGET_* -->
@@ -33,7 +32,7 @@
     <arg name="left_thrust_key" value="ASSET_1_COMMANDED_THRUST_L"/>
     <arg name="right_thrust_key" value="ASSET_1_COMMANDED_THRUST_R"/>
 
-    <!-- Protobuf gateway port 
+    <!-- Protobuf gateway port
          Must reflect GPORT in MOOS mission launch.sh-->
     <arg name="gateway_port" value="9501" />
   </include>

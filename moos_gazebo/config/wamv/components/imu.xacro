@@ -2,7 +2,7 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
   <xacro:macro name="imu" params="name:=imu x:=0.3 y:=0.0 z:=1.3 R:=0 P:=0 Y:=0 update_rate:=15">
     <link name="${tf_prefix}/${namespace}/${name}_link">
-      <visual name="${name}_visual">>
+      <visual name="${name}_visual">
         <geometry>
           <box size="0.05 0.025 0.005" />
         </geometry>
