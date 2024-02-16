@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
 
 """
-    NAME: Michael DeFilippo 
-    ORGN: Dept of Mechanical Engineering, MIT, Cambridge MA                                         
+    NAME: Michael DeFilippo
+    ORGN: Dept of Mechanical Engineering, MIT, Cambridge MA
     FILE: compose_contact_report.py
-    DATE: 2023-01-03                                                                                
-    NOTE: Node to parse contact vessel topics into a node report for MOOS 
+    DATE: 2023-01-03
+    NOTE: Node to parse contact vessel topics into a node report for MOOS
           consumption
-                                                                                                    
- This is unreleased BETA code. no permission is granted or                                          
- implied to use, copy, modify, and distribute this software                                         
- except by the author(s), or those designated by the author.                                        
+    UPDATES: Updates with Aurora (Karan) 2024
+
+ This is unreleased BETA code. no permission is granted or
+ implied to use, copy, modify, and distribute this software
+ except by the author(s), or those designated by the author.
 """
 
 
