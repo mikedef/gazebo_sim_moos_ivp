@@ -1,18 +1,18 @@
-#!/usr/bin/env python3                                                                                  
+#!/usr/bin/env python3
 
-'''                                                                                                     
-    NAME: Michael DeFilippo                                                                             
-    ORGN: Dept of Mechanical Engineering, MIT, Cambridge MA                                             
-    FILE: desired_to_thrust.py                                                                        
-    DATE: 2022-11-14                                                                                    
-    NOTE: Node parse data coming in from protobuf_client into                                 
-          topics for ROS consumption          
-                                                                                                        
- This is unreleased BETA code. no permission is granted or                                              
- implied to use, copy, modify, and distribute this software                                             
- except by the author(s), or those designated by the author.                                            
-'''                                                                                                     
-                                                                                                        
+'''
+    NAME: Michael DeFilippo
+    ORGN: Dept of Mechanical Engineering, MIT, Cambridge MA
+    FILE: desired_to_thrust.py
+    DATE: 2022-11-14
+    NOTE: Node parse data coming in from protobuf_client into
+          topics for ROS consumption
+
+   Copyright MIT and author/s of software.
+   This is unreleased BETA code. No permission is granted or
+   implied to use, copy, modify, and distribute this software
+   except by the author(s), or those designated by the author.
+'''
 
 import rospy
 
@@ -37,18 +37,17 @@ class Node(object):
         self.left_ok = False
         self.right_ok = False
         # scaling MOOS thrust/rudder from -100:100 to -1:1
-        self.linear_scaling = 1.0  
+        self.linear_scaling = 1.0
         self.angular_scaling = 1.0
         # placing limits on how much thrust we send to each thruster. Probably need to edit once we are comfortable with moving the USV around
         self.upper_thrust_limit = 1.0
         self.lower_thrust_limit = -1.0
 
-        
         # Publishers
         self.pub_left_thrust = rospy.Publisher("left_cmd", Float32, queue_size=10)
         self.pub_right_thrust = rospy.Publisher("right_cmd", Float32, queue_size=10)
         #self.pub_to_gateway = rospy.Publisher("/send_to_gateway", Gateway, queue_size=100)
-        
+
         # Subscribers
         self.s1 = rospy.Subscriber("/gateway_msg", Gateway, self.parse_gateway_cb)
 

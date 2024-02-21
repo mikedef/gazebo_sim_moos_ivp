@@ -9,9 +9,10 @@
           consumption
     UPDATES: Updates with Aurora (Karan) 2024
 
- This is unreleased BETA code. no permission is granted or
- implied to use, copy, modify, and distribute this software
- except by the author(s), or those designated by the author.
+   Copyright MIT and author/s of software.
+   This is unreleased BETA code. No permission is granted or
+   implied to use, copy, modify, and distribute this software
+   except by the author(s), or those designated by the author.
 """
 
 

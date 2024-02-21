@@ -1,18 +1,18 @@
-#!/usr/bin/env python3                                                                                  
+#!/usr/bin/env python3
 
-'''                                                                                                     
-    NAME: Michael DeFilippo                                                                             
-    ORGN: Dept of Mechanical Engineering, MIT, Cambridge MA                                             
-    FILE: thrust_vessel.py                                                                        
-    DATE: 2023-10-24                                                                                    
-    NOTE: Node to parse data coming in from protobuf_client into                                 
-          topics for ROS consumption          
-                                                                                                        
- This is unreleased BETA code. no permission is granted or                                              
- implied to use, copy, modify, and distribute this software                                             
- except by the author(s), or those designated by the author.                                            
-'''                                                                                                     
-                                                                                                        
+'''
+    NAME: Michael DeFilippo
+    ORGN: Dept of Mechanical Engineering, MIT, Cambridge MA
+    FILE: thrust_vessel.py
+    DATE: 2023-10-24
+    NOTE: Node to parse data coming in from protobuf_client into
+          topics for ROS consumption
+
+   Copyright MIT and author/s of software.
+   This is unreleased BETA code. No permission is granted or
+   implied to use, copy, modify, and distribute this software
+   except by the author(s), or those designated by the author.
+'''
 
 import rospy
 
@@ -28,11 +28,11 @@ class Node(object):
         self.right_thrust = Float32()
         self.left_ok = False
         self.right_ok = False
-        
+
         # Publishers
         self.pub_left_thrust = rospy.Publisher("left_cmd", Float32, queue_size=10)
         self.pub_right_thrust = rospy.Publisher("right_cmd", Float32, queue_size=10)
-        
+
         # Subscribers
         self.s1 = rospy.Subscriber("/gateway_msg", Gateway, self.parse_gateway_cb)
 

@@ -1,17 +1,17 @@
-#!/usr/bin/env python3                                                                                  
+#!/usr/bin/env python3
 
-'''                                                                                                     
-    NAME: Michael DeFilippo                                                                             
-    ORGN: Dept of Mechanical Engineering, MIT, Cambridge MA                                             
-    FILE: publish_robot_data.py                                                                        
-    DATE: 2023-01-31                                                                                    
+'''
+    NAME: Michael DeFilippo
+    ORGN: Dept of Mechanical Engineering, MIT, Cambridge MA
+    FILE: publish_robot_data.py
+    DATE: 2023-01-31
     NOTE: Node to publish robot data rpy, heading, speed from various sources
-                                                                                                        
- This is unreleased BETA code. no permission is granted or                                              
- implied to use, copy, modify, and distribute this software                                             
- except by the author(s), or those designated by the author.                                            
-'''                                                                                                     
-                                                                                                        
+
+   Copyright MIT and author/s of software.
+   This is unreleased BETA code. No permission is granted or
+   implied to use, copy, modify, and distribute this software
+   except by the author(s), or those designated by the author.
+'''
 
 import rospy
 import math
@@ -28,9 +28,9 @@ class Node(object):
         # Injest Launch Params
         self.namespace = rospy.get_param("~namespace", 'wamv')
         self.root_namespace = rospy.get_param("~root_namespace", 'none')
-        
+
         # Publishers
-        # set to namespace 
+        # set to namespace
         self.pub_rpy = rospy.Publisher('/' + self.root_namespace + '/' + self.namespace + "/sensors/imu/imu/rpy", Vector3, queue_size=100)
         self.pub_heading = rospy.Publisher('/' + self.root_namespace + '/' + self.namespace + "/sensors/imu/imu/heading", Float32, queue_size=100)
         self.pub_gps_speed = rospy.Publisher('/' + self.root_namespace + '/' + self.namespace + "/sensors/gps/gps/speed", Float32, queue_size=100)
@@ -38,7 +38,7 @@ class Node(object):
         self.pub_gt_heading = rospy.Publisher('/' + self.root_namespace + '/' + self.namespace + "/robot_localization/heading", Float32, queue_size=100)
         self.pub_denied_speed = rospy.Publisher('/' + self.root_namespace + '/' + self.namespace + "/denied_localization/speed", Float32, queue_size=100)
         self.pub_denied_heading = rospy.Publisher('/' + self.root_namespace + '/' + self.namespace + "/denied_localization/heading", Float32, queue_size=100)
-        
+
         # Subscribers
         self.s1 = rospy.Subscriber('/' + self.root_namespace + '/' + self.namespace + '/sensors/imu/imu/data', Imu, self.imu_cb)
         self.s2 = rospy.Subscriber('/' + self.root_namespace + '/' + self.namespace + '/sensors/gps/gps/fix_velocity', Vector3Stamped, self.speed_from_gps)
@@ -90,10 +90,10 @@ class Node(object):
         return calc
 
     def calc_heading(self, q):
-        (roll, pitch, yaw) = euler_from_quaternion([q.x, q.y, q.z, q.w])                        
+        (roll, pitch, yaw) = euler_from_quaternion([q.x, q.y, q.z, q.w])
         yaw = 1.57 - yaw
         return math.fmod(math.degrees(yaw) + 360, 360)  # 0-360 degrees
-    
+
 if __name__ == '__main__':
     rospy.init_node('publish_robot_data', anonymous=True)
 
@@ -102,6 +102,6 @@ if __name__ == '__main__':
 
     try:
         rospy.spin()
-        
+
     except rospy.ROSInterruptException:
         pass
